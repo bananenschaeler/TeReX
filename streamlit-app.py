@@ -108,7 +108,6 @@ def search_arxiv(search_query):
 
 # Icon image
 img_icon = Image.open("img/icon.png")
-st.set_page_config()
 # Page setup
 st.set_page_config(page_title = "TeReX", page_icon = img_icon, layout = "wide")
 
