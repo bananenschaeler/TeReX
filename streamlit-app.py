@@ -106,6 +106,9 @@ def search_arxiv(search_query):
 ###################### App ###############################
 ##########################################################
 
+with open("img/loading2.json","r") as file:
+	url = json.load(file)
+
 # Icon image
 img_icon = Image.open("img/icon.png")
 # Page setup
@@ -164,9 +167,6 @@ if search or st.session_state.button_clicked:
 
 	_, col, _ = st.columns([2,0.7,2])
 	with col:
-		with open("img/loading2.json","r") as file:
-			url = json.load(file)
-
 		with st_lottie_spinner(url):
 
 			# Ping data base to get recommended articles based on selection
