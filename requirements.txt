@@ -1,0 +1,7 @@
+streamlit-searchbox
+streamlit-lottie
+streamlit-extras
+feedparser
+firebase-admin
+numpy
+pandas
