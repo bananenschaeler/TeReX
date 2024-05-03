@@ -1,0 +1,7 @@
+[client]
+showErrorDetails = false
+
+[theme]
+base="light"
+primaryColor="#5a7285"
+font="serif"
