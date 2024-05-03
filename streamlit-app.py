@@ -145,7 +145,7 @@ _, col, _ = st.columns([1,2,1])
 with col:
 	col_inside,b = st.columns([9,1])
 	with col_inside:
-		select = st_searchbox(label="", editable_after_submit = True, search_function=search_arxiv, placeholder = "Search for title, author, arXiv ID...", default_options = [""])
+		select = st_searchbox(label="", search_function=search_arxiv, placeholder = "Search for title, author, arXiv ID...", default_options = [""])
 		if select is None:
 			st.session_state.button_clicked = False
 			st.session_state.button_clicked_more = False
