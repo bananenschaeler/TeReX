@@ -198,7 +198,7 @@ if search or st.session_state.button_clicked:
 				displ.display(hit, high_match)
 
 		if st.session_state.display_button:
-			_, col, _ = st.columns([5,1,5])
+			_, col, _ = st.columns([4.5,1,4.5])
 			with col:
 				more = st.button("Show more", type="secondary", on_click=callback_disappear)
 		if st.session_state.button_clicked_more:
