@@ -44,7 +44,7 @@ def callback_disappear():
 
 ## Cached functions:
 # Load recommendations from database
-@st.cache_data(show_spinner=False)
+#@st.cache_data(show_spinner=False)
 def get_recomms_from_db(select):
 	related_papers = db.retrieve_entry(select)
 	if related_papers is not None:
@@ -58,7 +58,7 @@ def get_recomms_from_db(select):
 		return None, None
 
 # Add hits to data that is displayed
-@st.cache_data(show_spinner=False)
+#@st.cache_data(show_spinner=False)
 def add_hits(hits, related_papers_ids, start, end):
 	## Loop through related papers and fetch data
 	for i in range(start, end):
