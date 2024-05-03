@@ -8,12 +8,14 @@ from firebase_admin import firestore
 from helper import link_to_id
 import pandas as pd
 import numpy as np
+import json
 
 ######### Init firebase connection ###############
 
 if not firebase_admin._apps:
 	## Establish firebase connection if not done so before
-	cred = credentials.Certificate('data/paperterex-firebase-adminsdk-lj1go-b7e60d4f5c.json')
+	key_dict = json.loads(st.secrets["textkey"])
+	cred = credentials.Certificate(key_dict)
 	app = firebase_admin.initialize_app(cred)
 
 ############### API functions ####################
