@@ -191,7 +191,7 @@ if search or st.session_state.button_clicked:
 		with col:
 			for i in range(display_chunk_size):
 				hit = hits[i]
-				if cs[i] > 0.94:
+				if cs[i] > 0.95:
 					high_match = True
 				else:
 					high_match = False
@@ -211,7 +211,7 @@ if search or st.session_state.button_clicked:
 			with col1:
 				for i in range(display_chunk_size, 2*display_chunk_size):
 					hit = hits[i]
-					if cs[i] > 0.94:
+					if cs[i] > 0.95:
 						high_match = True
 					else:
 						high_match = False
