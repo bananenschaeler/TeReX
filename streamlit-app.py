@@ -114,7 +114,7 @@ st.set_page_config(page_title = "TeReX", page_icon = img_icon, layout = "wide")
 
 # Hide streamlit running man for loading
 hide_streamlit_style = displ.hide_st_style()
-#st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 # Change padding of borders
 padding_style = displ.padding_style()
