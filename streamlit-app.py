@@ -48,10 +48,11 @@ def callback_disappear():
 def get_recomms_from_db(select):
 	related_papers = db.retrieve_entry(select)
 	if related_papers is not None:
-		cross_scores = related_papers["cross_scores"]
-		idx = np.argsort(cross_scores)[::-1]
-		cs = np.array(cross_scores)[idx]
-		related_papers_ids = np.array(related_papers["related_arXiv_ids"])[idx]
+		cutoff = 30
+		cross_scores = related_papers["cross_scores"][:]
+		idx = np.argsort(cross_scores[:])[::-1]
+		cs = np.array(cross_scores[:])[idx]
+		related_papers_ids = np.array(related_papers["related_arXiv_ids"][:])[idx]
 		return related_papers_ids[1:], cs[1:]
 	else:
 		return None, None
@@ -80,7 +81,7 @@ def search_arxiv(search_query):
 	search_query = db.convert_string(search_query)
 
 	url_base = 'http://export.arxiv.org/api/query?search_query='
-	url_ending = '&sortBy=lastUpdatedDate&sortOrder=descending&max_results=30&searchtype=all&source=header'
+	url_ending = '&sortBy=lastUpdatedDate&sortOrder=descending&max_results=50&searchtype=all&source=header'
 	url = url_base + search_query + url_ending
 	response = urllib.request.urlopen(url).read()
 
@@ -132,10 +133,10 @@ with col:
 	        }
 	        """,
 	):
-		st.button("**?**", disabled = True, help="**TeReX (Transformer enabled research explorer) lets you find similar papers based on your input paper using a multi-step filtering process based on large language models. You can search through all papers listed on the arXiv and find corresponding recommendations. Papers are updated on a weekly basis.**")
+		st.button("**?**", disabled = True, help="**TeReX (Transformer Enabled Research Explorer) lets you find similar papers based on your input paper using large language models and a multi-step filtering process. You can search through all papers listed on the arXiv and get corresponding recommendations. The database is updated on a weekly basis.**")
 
 # Title image
-_, col, _ = st.columns([2.2,1,2.2])
+_, col, _ = st.columns([2.1,1,2.1])
 with col:
 	st.image("img/title2.png")
 
@@ -184,7 +185,7 @@ if search or st.session_state.button_clicked:
 		with col:
 			for i in range(display_chunk_size):
 				hit = hits[i]
-				if cs[i] > 1.9:
+				if cs[i] > 0.94:
 					high_match = True
 				else:
 					high_match = False
@@ -204,7 +205,7 @@ if search or st.session_state.button_clicked:
 			with col1:
 				for i in range(display_chunk_size, 2*display_chunk_size):
 					hit = hits[i]
-					if cs[i] > 1.9:
+					if cs[i] > 0.94:
 						high_match = True
 					else:
 						high_match = False
