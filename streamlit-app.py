@@ -138,7 +138,14 @@ with col:
 _, col, _ = st.columns([2.1,1,2.1])
 with col:
 	st.image("img/title2.png")
-
+	hide_img_fs = '''
+	<style>
+	button[title="View fullscreen"]{
+    	visibility: hidden;}
+	</style>
+	'''
+	st.markdown(hide_img_fs, unsafe_allow_html=True)
+	
 # Searchbox and search button
 _, col, _ = st.columns([1,2,1])
 with col:
